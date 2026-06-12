@@ -11,6 +11,9 @@ public class CreateTarefaImpl implements CreateTarefa {
         tarefa.setNome(tarefa.getNome());
         tarefa.setDescricao(tarefa.getDescricao());
 
+        System.out.println(tarefa.getNome());
+        System.out.println(tarefa.getDescricao());
+
         return tarefa;
 
     }
