@@ -16,18 +16,31 @@ public class ToDoList {
         TarefaDto tarefaDto = new TarefaDto();
         TarefaMapper tarefaMapper = new TarefaMapper();
 
-
         Scanner sc = new Scanner(System.in);
 
+        String continuar = "S";
+
+        while (continuar.equalsIgnoreCase("s")) {
 
 
-        System.out.println("Digite o nome do tarefa: ");
-        tarefaDto.setNome(sc.nextLine()) ;
 
-        System.out.println("Digite o descricao do tarefa: ");
-        tarefaDto.setDescricao(sc.nextLine());
+            System.out.println("Digite o nome do tarefa: ");
+            tarefaDto.setNome(sc.nextLine()) ;
 
-        createTarefa.create(tarefaMapper.toTarefaEntity(tarefaDto));
+            System.out.println("Digite o descricao do tarefa: ");
+            tarefaDto.setDescricao(sc.nextLine());
+
+            createTarefa.create(tarefaMapper.toTarefaEntity(tarefaDto));
+
+            System.out.println("deseja continuar? (S/N)");
+            continuar = sc.next();
+            sc.nextLine();
+
+            if(continuar.equalsIgnoreCase("N")) {
+               continuar = "N";
+            }
+        }
+
 
     }
 }
