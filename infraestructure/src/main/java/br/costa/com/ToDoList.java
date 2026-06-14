@@ -5,8 +5,7 @@ import br.costa.com.application.usecaseimpl.AdcionarListaTarefaUseCaseImpl;
 import br.costa.com.application.usecaseimpl.CreateTarefaUseCaseImpl;
 import br.costa.com.application.usecaseimpl.ListarTarefasUseCaseImpl;
 import br.costa.com.mapper.TarefaMapper;
-import br.costa.com.useCase.AdcionarListaTarefaUseCase;
-import br.costa.com.useCase.ListarTarefasUseCase;
+
 
 import java.util.Scanner;
 
