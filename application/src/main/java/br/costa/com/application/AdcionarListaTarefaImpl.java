@@ -1,7 +1,6 @@
 package br.costa.com.application;
 
 import br.costa.com.entity.ListaTarefasEntity;
-import br.costa.com.entity.TarefaEntity;
 import br.costa.com.entity.tarefaEnum.TarefaEnum;
 import br.costa.com.useCase.AdcionarListaTarefa;
 
