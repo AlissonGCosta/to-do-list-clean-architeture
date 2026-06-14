@@ -1,9 +1,12 @@
 package br.costa.com;
 
 import br.costa.com.Dto.request.TarefaDto;
-import br.costa.com.application.CreateTarefaImpl;
-import br.costa.com.entity.TarefaEntity;
+import br.costa.com.application.usecaseimpl.AdcionarListaTarefaUseCaseImpl;
+import br.costa.com.application.usecaseimpl.CreateTarefaUseCaseImpl;
+import br.costa.com.application.usecaseimpl.ListarTarefasUseCaseImpl;
 import br.costa.com.mapper.TarefaMapper;
+import br.costa.com.useCase.AdcionarListaTarefaUseCase;
+import br.costa.com.useCase.ListarTarefasUseCase;
 
 import java.util.Scanner;
 
@@ -12,9 +15,15 @@ public class ToDoList {
 
     static void main() {
 
-        CreateTarefaImpl createTarefa = new CreateTarefaImpl();
+        AdcionarListaTarefaUseCaseImpl banco = new AdcionarListaTarefaUseCaseImpl();
+
+        CreateTarefaUseCaseImpl createTarefaUseCase = new CreateTarefaUseCaseImpl(banco);
+        ListarTarefasUseCaseImpl listarTarefasUseCase = new ListarTarefasUseCaseImpl(banco);
+
+
         TarefaDto tarefaDto = new TarefaDto();
         TarefaMapper tarefaMapper = new TarefaMapper();
+
 
         Scanner sc = new Scanner(System.in);
 
@@ -44,7 +53,7 @@ public class ToDoList {
                         System.out.println("Digite o descricao do tarefa: ");
                         tarefaDto.setDescricao(sc.nextLine());
 
-                        createTarefa.create(tarefaMapper.toTarefaEntity(tarefaDto));
+                        createTarefaUseCase.create(tarefaMapper.toTarefaEntity(tarefaDto));
 
                         System.out.println("deseja continuar? (S/N)");
                         continuarMenuAdcionar = sc.next();
@@ -58,12 +67,7 @@ public class ToDoList {
 
                 case 2:
 
-                    System.out.println("++++++++++++++++++++++++++++");
-                    System.out.println("Listando tarefas ja Adcionadas");
-                    System.out.println("++++++++++++++++++++++++++++");
-
-
-
+                    listarTarefasUseCase.listarTarefas();
 
                     break;
 
